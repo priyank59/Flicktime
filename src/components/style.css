@@ -1,11 +1,37 @@
 body{
-    background: #bdc3c7;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: #ccccff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,  #ccccff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,  #ccccff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.btn-grp{
+    background-color: #ccccff;
+    border-color:#003333;
+    border-radius: 7px;
+    border-width: 3px;
+    color:#003333;
+}
+
+.btn-grp:hover{
+    background-color: #003333;
+    border-color:#003333;
+    border-radius: 7px;
+    border-width: 3px;
+    color:#ccccff;
+    box-shadow: 3px 2px 22px 7px rgba(2, 54, 66, 0.281);
+}
+
+.btn-grp:focus{
+    background-color: #003333;
+    border-color:#003333;
+    border-radius: 7px;
+    border-width: 3px;
+    color:#ccccff;
 }
 
 .form{
-    background-color: white;
+    background-color:  #ccccff;
     border-radius: 5px;
     width: 550px;
     margin: 20px auto;
@@ -33,3 +59,25 @@ body{
 .footer{
     text-align: center;
 }
+
+.nav_strip{
+    background-color: #003333;
+    padding: 10px;
+}
+
+.submit_btn{
+    text-align: center;
+    color:  #ccccff;
+    background-color: #003333;
+}
+
+.text_light{
+    color: #ccccff;
+}
+
+.text_dark{
+    color: #003333;
+}
+
+/* #ff1a1a
+#330000 */
