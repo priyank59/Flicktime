@@ -6,6 +6,7 @@ import {Login} from './components/login';
 import { ForgotPassword } from './components/forgotPassword';
 import {ChangePassword} from './components/changePassword';
 import {Home} from './components/home';
+import {PaymentPlan} from './components/paymentPlan';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
@@ -16,6 +17,7 @@ function App() {
           <div>
             <Routes>
                 <Route exact path="/" element={<Login/>} />
+                <Route path='/paymentPlan' element={<PaymentPlan/>}/>                
                 <Route path='/registrationForm' element={<RegistrationForm/>}/>
                 <Route path='/forgotPassword' element={<ForgotPassword/>}/>
                 <Route path='/changePassword' element={<ChangePassword/>}/>
