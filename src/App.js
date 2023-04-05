@@ -1,31 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './components/header';
-import {RegistrationForm} from './components/registrationForm';
-import {Login} from './components/login';
-import { ForgotPassword } from './components/forgotPassword';
-import {ChangePassword} from './components/changePassword';
-import {Home} from './components/home';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
 
+import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
+
+import React, { useState, useEffect }  from 'react';
+// import { ToastContainer, toast } from 'react-toastify';
+import { Outlet } from "react-router-dom";
 
 function App() {
-  return (
-    <>
-   <BrowserRouter>
-          <div>
-            <Routes>
-                <Route exact path="/" element={<Login/>} />
-                <Route path='/registrationForm' element={<RegistrationForm/>}/>
-                <Route path='/forgotPassword' element={<ForgotPassword/>}/>
-                <Route path='/changePassword' element={<ChangePassword/>}/>
-                <Route path='/home' element={<Home/>}/>
-            </Routes>
-          </div>
-        </BrowserRouter>
-        </>
-  );
-}
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const checkUserToken = () => {
+    const userToken = localStorage.getItem('user-token');
+    if (!userToken || userToken === 'undefined') {
+      setIsLoggedIn(false);
+    }
+    setIsLoggedIn(true);
+  }
+
+  useEffect(() => {
+    checkUserToken();
+  }, [isLoggedIn]);
+
+  return (
+    <React.Fragment>
+      {isLoggedIn && <NavigationBar />}
+      <Outlet />
+      {isLoggedIn && <Footer />}
+    </React.Fragment>
+  );
+
+}
 
 export default App;

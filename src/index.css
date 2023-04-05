@@ -7,7 +7,52 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.bckg-dark{
+  background-color: #003333;
+}
+
+.bckg-light{
+  background-color: #befaf9;
+}
+
+.color-dark{
+  color: #003333;
+}
+
+.color-light{
+  color: #befaf9;
+}
+
+.btn-light-style{
+  text-decoration: none;
+  color: #befaf9;
+}
+
+.btn-light-style:hover{
+  text-decoration: none;
+  color: #befaf9;
+}
+
+.btn-light-style:active{
+  text-decoration: none;
+  transform: translateY(4px);
+}
+
+.btn-dark-style{
+  text-decoration: none;
+  color: #003333;
+}
+
+.btn-dark-style:hover{
+  text-decoration: none;
+  color: #003333;
+}
+
+.btn-dark-style:active{
+  text-decoration: none;
+  transform: translateY(4px);
 }
