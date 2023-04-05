@@ -12,13 +12,14 @@ import AuthLogin from './authComponents/AuthLogin';
 import Home from './components/Home';
 import About from './components/About';
 import Profile from './components/Profile';
+import Movie from './components/Movie';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<React.StrictMode>
+	// <React.StrictMode>
 		<BrowserRouter basename={'/'}>
 			<Routes>
 				<Route path='/authComponents' element={<Auth />}>
@@ -47,6 +48,11 @@ root.render(
 							<Profile />
 						</ProtectedRoute>
 					} />
+					<Route path='Movie/:movieId' element={
+						<ProtectedRoute>
+							<Movie />
+						</ProtectedRoute>
+					} />
 				</Route>
 			</Routes>
 			<ToastContainer
@@ -62,7 +68,7 @@ root.render(
 				theme="colored"
 				/>
 		</BrowserRouter>
-	</React.StrictMode>
+	// </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

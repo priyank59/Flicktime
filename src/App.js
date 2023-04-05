@@ -35,34 +35,3 @@ function App() {
 }
 
 export default App;
-
-
-
-// import { RegistrationForm} from './components/RegistrationForm';
-// import { Login} from './components/Login';
-// import { ForgotPassword } from './components/ForgotPassword';
-// import { ChangePassword} from './components/ChangePassword';
-// import { Home} from './components/Home';
-// import { PaymentPlan} from './components/PaymentPlan';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-
-
-// function App() {
-//   return (
-//     <>
-//    <BrowserRouter>
-//           <div>
-//             <Routes>
-//                 <Route exact path="/" element={<RegistrationForm/>} />
-//                 <Route path='/PaymentPlan' element={<PaymentPlan/>}/>                
-//                 <Route path='/RegistrationForm' element={<RegistrationForm/>}/>
-//                 <Route path='/ForgotPassword' element={<ForgotPassword/>}/>
-//                 <Route path='/ChangePassword' element={<ChangePassword/>}/>
-//                 <Route path='/Home' element={<Home/>}/>
-//             </Routes>
-//           </div>
-//         </BrowserRouter>
-//         </>
-//   );
-// }

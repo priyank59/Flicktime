@@ -4,7 +4,6 @@ import { Button, Col, Container, Form, FormGroup, FormLabel, Row } from "react-b
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import globalVariable from "../globalVar";
 
 const AuthLogin = () => {
 
@@ -57,7 +56,7 @@ const AuthLogin = () => {
                         progress: undefined,
                         theme: "colored",
                         });
-                    globalVariable.email = formDataJSON.email;
+                    localStorage.setItem('email', formDataJSON.email);
                     navigate('/');
                 }, 500);
             }
