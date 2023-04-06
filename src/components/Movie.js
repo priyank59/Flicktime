@@ -4,20 +4,16 @@ import Youtube from "react-youtube";
 import axios from "../axios";
 import { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-// import { useLocation } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { projectFirestore } from '../firebase/config';
+import { doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 
 // const Movie = ({route,navigate}) => {
 const Movie = () => {
 
     const { movieId } = useParams();
-
-    // const location = useLocation();
-    // const movieId = location.state.id;
-
     const [trailerUrl, setTrailerUrl] = useState("");
-    // const [movieDetails, setMovieDetails] = useState();
 
     const [title, setTitle] = useState("");
     const [overview, setOverview] = useState("");
@@ -40,13 +36,13 @@ const Movie = () => {
 
     useEffect(() => {
 
+        updateDoc(doc(projectFirestore, "userHistory", localStorage.getItem('email')), {
+            historyList: arrayUnion(movieId)
+        });
+
         axios.get(
             `movie/${movieId}?api_key=964bd231b237392f459b9752e8e1b75b`
-        ).then( (response) => {
-            console.log(response.data);
-            
-            // setMovieDetails(response.data);
-            
+        ).then( (response) => {            
             setTitle(response.data.title);
             setOverview(response.data.overview);
             setReleaseDate(response.data.release_date);

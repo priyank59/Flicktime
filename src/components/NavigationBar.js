@@ -2,22 +2,45 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import axios from "axios";
 // import logo from './dropdown.png';
 
 import { Nav } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
+import { projectFirestore } from "../firebase/config";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const NavigationBar = () => {
 
     const navigate = useNavigate();
+    const recommendationAPI = '/recommend';
+    var email;
+    var movieIdList;
 
-    const logout = () => {
+    const logout = async () => {
+        email = localStorage.getItem('email');
+        console.log(email);
+
+        const docRef = doc(projectFirestore, "userHistory", email);
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()) {
+            console.log(docSnap.data().historyList);
+            movieIdList = docSnap.data().historyList;
+        }
+        
+        axios.post(recommendationAPI, { "movieIdList" : movieIdList})
+        .then((response) => {
+          console.log(response.data)
+          setDoc(doc(projectFirestore, "userRecommendations", email), {
+            recommendationList: response.data
+          })
+        })
+
         localStorage.clear();
         navigate('/authComponents/AuthLogin');
     }
 
     return (
-
     
         <React.Fragment>
             <Navbar expand="lg" className="navbar-dark bckg-dark code">
