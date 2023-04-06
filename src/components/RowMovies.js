@@ -1,34 +1,79 @@
 import React, { useState, useEffect } from "react";
-import axios from "../axios";
+import axios1 from "../axios";
+import axios from "axios";
 import "./Row.css";
 import { Link } from "react-router-dom";
+import { projectFirestore } from '../firebase/config';
+import { doc, getDoc } from "firebase/firestore";
 
 const baseImgUrl = "https://image.tmdb.org/t/p/original";
 
-function Row({ title, fetchUrl, isLargeRow, query }) {
+function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
 
   const [movies, setMovies] = useState([]);
 
+  const email = localStorage.getItem('email');
+	
+	var recommList;
+	
+  var finalList = [];
+
   useEffect(() => {
-    async function fetchData() {
-      if(query) {
-        fetchUrl = fetchUrl + "&query=" + query;
+    if(!isRecommand) {
+      async function fetchDataOthers() {
+        if(query) {
+          fetchUrl = fetchUrl + "&query=" + query;
+        }
+        const request = await axios1.get(fetchUrl);
+        setMovies(request.data.results);
+        return request;
       }
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
-      return request;
+      fetchDataOthers();
     }
-    fetchData();
-  }, [fetchUrl, query]);
+    else {
+      async function fetchDataRecommended() {
+        const docRef = doc(projectFirestore, "userRecommendations", email);
+        const docSnap = await getDoc(docRef);
+      
+        if(docSnap.exists()) {
+
+          recommList = docSnap.data().recommendationList;
+        
+          Object.values(recommList).map((value, index) => {
+            finalList.push(parseInt(value));
+          })
+        }
+
+        var moviesList = [];
+        moviesList = await Promise.all(
+          finalList.map(
+            async (e) => {
+              fetchUrl = `https://api.themoviedb.org/3/movie/${e}?api_key=964bd231b237392f459b9752e8e1b75b`
+              const request = await axios1.get(fetchUrl);
+              const data = request.data
+              return {'id':data.id, 'backdrop_path':data.backdrop_path, 'poster_path':data.poster_path, 'name':data.title}
+            }
+          )
+        )
+        setMovies(moviesList);
+      }
+      fetchDataRecommended();
+    }
+  }, [query, isRecommand]);
+
+
 
   return (
     <div className="row">
       <h4>{title}</h4>
+      
       <div className="row_posters">
-        {
-            movies.map(
-            (movie) =>
-                movie.backdrop_path !== null && (
+        { 
+          movies && movies.map(
+            (movie) => 
+              
+            {
+              return movie.backdrop_path !== null && (
                   <Link to={`/Movie/${movie.id}`}>
                     <img
                         className={`row_poster ${isLargeRow && "row_posterLarge"}`}
@@ -40,6 +85,7 @@ function Row({ title, fetchUrl, isLargeRow, query }) {
                     />
                   </Link>
                 )
+            }
             )
         }
       </div>
