@@ -26,7 +26,7 @@ const Profile = () => {
 			setFirstName(docSnap.data().firstName);
 			setLastName(docSnap.data().lastName);
 		}
-	}, [email]);
+	}, []);
 
 	return (
 		<React.Fragment>
