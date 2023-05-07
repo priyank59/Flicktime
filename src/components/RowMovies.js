@@ -1,7 +1,8 @@
+import "../index.css";
+import "./Row.css";
+
 import React, { useState, useEffect } from "react";
 import axios1 from "../axios";
-import axios from "axios";
-import "./Row.css";
 import { Link } from "react-router-dom";
 import { projectFirestore } from '../firebase/config';
 import { doc, getDoc } from "firebase/firestore";
@@ -39,7 +40,7 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
 
           recommList = docSnap.data().recommendationList;
         
-          Object.values(recommList).map((value, index) => {
+          Object.values(recommList).forEach((value, index) => {
             finalList.push(parseInt(value));
           })
         }
@@ -65,7 +66,7 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
 
   return (
     <div className="row">
-      <h4>{title}</h4>
+      <h4 className="color-dark">{title}</h4>
       
       <div className="row_posters">
         { 
