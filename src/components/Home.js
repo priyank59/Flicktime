@@ -12,9 +12,9 @@ const Home = () => {
 	const [searchQuery, setSearchQuery] = useState();
  
 	return (
-		<React.Fragment>
+		
 			<Container className='py-5 code'>
-				<Form.Control name="searchInput" type="search" placeholder="Search" className="me-auto color-dark" aria-label="Search" onChange={(e) => setSearchQuery(e.currentTarget.value)}/>
+				<Form.Control name="searchInput" type="search" placeholder="Search" className="me-auto color-dark" aria-label="Search" style={{marginLeft:30, width:1240}} onChange={(e) => setSearchQuery(e.currentTarget.value)}/>
 				{searchQuery && <RowMovies title="Search result" fetchUrl={requests.fetchSearch} query={searchQuery} isRecommand={false}/>}	
 				<RowMovies title="Trending Now" fetchUrl={requests.fetchTrending} isRecommand={false} isLargeRow/>
 				<RowMovies title="Recommended" isRecommand={true}/>
@@ -25,7 +25,7 @@ const Home = () => {
 				<RowMovies title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} isRecommand={false} />
 				<RowMovies title="Documentaries" fetchUrl={requests.fetchDocumentaries} isRecommand={false}/>
 			</Container>
-		</React.Fragment>
+	
 	)
 }
 

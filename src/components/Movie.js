@@ -34,6 +34,10 @@ const Movie = () => {
         },
     };
 
+    const size = {
+        width: "95%"
+    };
+
     useEffect(() => {
 
         updateDoc(doc(projectFirestore, "userHistory", localStorage.getItem('email')), {
@@ -94,14 +98,14 @@ const Movie = () => {
 		<React.Fragment>
 			<Container className='py-5 code color-dark'>
 
-                <Container>    {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}  </Container>
+                <Container style={size}>    {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}  </Container>
                 
-                <Container>
+                <Container className="py-5">
                     <Container>    <h4> <b> Name: </b> {title} </h4>                         </Container>
                     <Container>    <h4> <b> Overview: </b> {overview} </h4>                  </Container>
                     <Container>    <h4> <b> Release Date: </b> {releaseDate} </h4>           </Container>
                     <Container>    { tagline && <h4> <b> Tagline: </b>  {tagline} </h4> }    </Container>
-                    <Container>    <h4> <b> Vote Average: </b> {voteAverage} </h4>           </Container>
+                    <Container>    <h4> <b> Vote Average: </b> {voteAverage}/10.0 </h4>           </Container>
                     <Container>    <h4> <b> Vote Count: </b> {voteCount} </h4>               </Container>
                     <Container>    <h4> <b> Runtime: </b> {runtime} min </h4>                </Container>
                     <Container>    { budget !== 0 && <h4> <b> Budget: </b> {budget} </h4> }  </Container>

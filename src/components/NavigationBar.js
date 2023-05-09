@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import axios from "axios";
-// import logo from './dropdown.png';
+import logo from './logo.png';
 
 import { Nav } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
@@ -45,8 +45,11 @@ const NavigationBar = () => {
         <React.Fragment>
             <Navbar expand="lg" className="navbar-dark bckg-dark code">
                 <Container>
-                    <Link className="me-auto btn-light-style" to="/Home"><h4><b>FlickTime</b></h4></Link>
-                      
+                    
+                    <img src={logo} alt="Logo" className="logo-light-style" height="50" width="50"/>
+                    
+                    <Link to="/Home" className="btn-light-style"><h4><b>FlickTime</b></h4></Link>
+                    
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                     <Navbar.Collapse id="basic-navbar-nav">

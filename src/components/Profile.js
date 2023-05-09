@@ -3,7 +3,7 @@ import user from './user.png';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { projectFirestore } from "../firebase/config";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 
 const Profile = () => {
@@ -19,17 +19,19 @@ const Profile = () => {
 		padding:25
 	};
 
-	useEffect( async () => {
-		const docRef = doc(projectFirestore, "userDetails", email);
-        const docSnap = await getDoc(docRef);
-		if(docSnap.exists()) {
-			setFirstName(docSnap.data().firstName);
-			setLastName(docSnap.data().lastName);
-		}
+	useEffect( () => {
+		const fetchProfile = async () => {
+			const docRef = doc(projectFirestore, "userDetails", email);
+			const docSnap = await getDoc(docRef);
+			if(docSnap.exists()) {
+				setFirstName(docSnap.data().firstName);
+				setLastName(docSnap.data().lastName);
+			}
+		};
+		fetchProfile();
 	}, []);
 
 	return (
-		<React.Fragment>
 
 			<Container style={centerDivStyle}>
 				<Container id="border" className='code color-dark'>
@@ -52,8 +54,7 @@ const Profile = () => {
 
 				</Container>
 			</Container>
-
-		</React.Fragment>
+		
 	)
 }
 

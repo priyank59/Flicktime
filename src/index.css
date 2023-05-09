@@ -63,3 +63,8 @@ body {
   padding: 20px; 
   width: 700px;
 }
+
+.logo-light-style{
+  text-decoration: none;
+  color: #befaf9;
+}

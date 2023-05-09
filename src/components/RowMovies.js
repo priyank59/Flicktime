@@ -6,6 +6,7 @@ import axios1 from "../axios";
 import { Link } from "react-router-dom";
 import { projectFirestore } from '../firebase/config';
 import { doc, getDoc } from "firebase/firestore";
+import { Container } from "react-bootstrap";
 
 const baseImgUrl = "https://image.tmdb.org/t/p/original";
 
@@ -66,30 +67,29 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
 
   return (
     <div className="row">
-      <h4 className="color-dark">{title}</h4>
-      
-      <div className="row_posters">
-        { 
-          movies && movies.map(
-            (movie) => 
-              
-            {
-              return movie.backdrop_path !== null && (
+      <h4 className="color-dark"> <b> {title} </b> </h4>
+      <Container>
+        <div className="row_posters">
+          { 
+            movies && movies.map(
+              (movie) => {
+                return movie.backdrop_path !== null && (
                   <Link to={`/Movie/${movie.id}`}>
                     <img
-                        className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-                        src={`${baseImgUrl}${
-                        isLargeRow ? movie.poster_path : movie.backdrop_path
-                        }`}
-                        alt={movie.name}
-                        key={movie.id}
+                      className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+                      src={`${baseImgUrl}${
+                      isLargeRow ? movie.poster_path : movie.backdrop_path
+                      }`}
+                      alt={movie.name}
+                      key={movie.id}
                     />
                   </Link>
                 )
-            }
+              }
             )
-        }
-      </div>
+          }
+        </div>
+      </Container>
     </div>
   );
 }
