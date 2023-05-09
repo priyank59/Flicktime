@@ -53,7 +53,7 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
               fetchUrl = `https://api.themoviedb.org/3/movie/${e}?api_key=964bd231b237392f459b9752e8e1b75b`
               const request = await axios1.get(fetchUrl);
               const data = request.data
-              return {'id':data.id, 'backdrop_path':data.backdrop_path, 'poster_path':data.poster_path, 'name':data.title}
+              return {'id':data.id, 'backdrop_path':data.backdrop_path, 'poster_path':data.poster_path, 'title':data.title}
             }
           )
         )
@@ -62,7 +62,6 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
       fetchDataRecommended();
     }
   }, [query, isRecommand]);
-
 
 
   return (
@@ -74,15 +73,16 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
             movies && movies.map(
               (movie) => {
                 return movie.backdrop_path !== null && (
-                  <Link to={`/Movie/${movie.id}`}>
+                  <Link to={`/Movie/${movie.id}`} style={{textDecoration:'none'}}>
                     <img
                       className={`row_poster ${isLargeRow && "row_posterLarge"}`}
                       src={`${baseImgUrl}${
                       isLargeRow ? movie.poster_path : movie.backdrop_path
                       }`}
-                      alt={movie.name}
+                      alt={movie.title}
                       key={movie.id}
                     />
+                    <div className="btn-dark-style" style={{paddingTop:5, textAlign:'center', fontSize:15}}>{movie.title}</div>
                   </Link>
                 )
               }

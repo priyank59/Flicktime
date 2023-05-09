@@ -48,7 +48,7 @@ const NavigationBar = () => {
                     
                     <img src={logo} alt="Logo" className="logo-light-style" height="50" width="50"/>
                     
-                    <Link to="/Home" className="btn-light-style"><h4><b>FlickTime</b></h4></Link>
+                    <Link to="/Home" className="btn-light-style"><h4 style={{marginLeft:10, marginTop:10}}><b>FlickTime</b></h4></Link>
                     
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
