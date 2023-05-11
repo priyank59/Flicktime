@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { projectFirestore } from '../firebase/config';
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import Ratings from "./Ratings";
 
 // const Movie = ({route,navigate}) => {
 const Movie = () => {
@@ -105,12 +106,15 @@ const Movie = () => {
                     <Container>    <h4> <b> Overview: </b> {overview} </h4>                  </Container>
                     <Container>    <h4> <b> Release Date: </b> {releaseDate} </h4>           </Container>
                     <Container>    { tagline && <h4> <b> Tagline: </b>  {tagline} </h4> }    </Container>
-                    <Container>    <h4> <b> Vote Average: </b> {voteAverage}/10.0 </h4>           </Container>
-                    <Container>    <h4> <b> Vote Count: </b> {voteCount} </h4>               </Container>
+                    <Container>    <h4> <b> Average ratings: </b> {voteAverage}/10.0 </h4>           </Container>
+                    <Container>    <h4> <b> Number of ratings: </b> {voteCount} </h4>               </Container>
                     <Container>    <h4> <b> Runtime: </b> {runtime} min </h4>                </Container>
                     <Container>    { budget !== 0 && <h4> <b> Budget: </b> {budget} </h4> }  </Container>
                     <Container>    { adult && <h4> <b> This movie is: </b> Adult </h4> }     </Container>
                     <Container>    <h4> <b> Popularity: </b> {popularity} </h4>              </Container>
+                    <Container> 
+                        <Ratings movieId={movieId}/> 
+                    </Container>
                 </Container>
 
 			</Container>

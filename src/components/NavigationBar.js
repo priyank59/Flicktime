@@ -18,19 +18,30 @@ const NavigationBar = () => {
     var movieIdList;
 
     const logout = async () => {
+
         email = localStorage.getItem('email');
-        console.log(email);
+        console.log("email: ", email);
 
         const docRef = doc(projectFirestore, "userHistory", email);
         const docSnap = await getDoc(docRef);
         if(docSnap.exists()) {
-            console.log(docSnap.data().historyList);
             movieIdList = docSnap.data().historyList;
         }
+        console.log("movieIdList: ", movieIdList);
+
+        const docRefTemp = projectFirestore.collection("userHistory/"+email+"/Ratings");
+        const docSnapTemp = await docRefTemp.get();
+        var ratingsMap = {};
+        docSnapTemp.forEach(doc => {
+            const docId = doc.id;
+            const docData = doc.data();
+            ratingsMap[docId] = docData.ratings;
+        });
+
+        console.log("ratingsMap: ", ratingsMap);
         
-        axios.post(recommendationAPI, { "movieIdList" : movieIdList})
+        axios.post(recommendationAPI, { "email" : email, "movieIdList" : movieIdList, "ratingsMap" : ratingsMap})
         .then((response) => {
-          console.log(response.data)
           setDoc(doc(projectFirestore, "userRecommendations", email), {
             recommendationList: response.data
           })

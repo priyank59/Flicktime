@@ -77,7 +77,10 @@ def signin():
     
 @app.route('/recommend',methods=['POST'])
 def getReccommendations():
+    email = request.json['email']
     movieIdList = request.json['movieIdList']
+    ratingsMap = request.json['ratingsMap']
+
     cosine_sim = pickle.load(open('../Files/cosine_sim.pkl', 'rb'))
     movie_dict = pickle.load(open('../Files/movie_df.pkl', 'rb'))
 
@@ -144,6 +147,10 @@ def getReccommendations():
     
     for i in range(len(final_list)):
         d[str(i)] = str(final_list[i])
+
+    print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX email: ', email)
+    print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX movieIdList', movieIdList)
+    print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ratingsMap', ratingsMap)
 
     return jsonify(d)
 
