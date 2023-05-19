@@ -1,10 +1,12 @@
+import "../index.css";
+import "./Row.css";
+
 import React, { useState, useEffect } from "react";
 import axios1 from "../axios";
-import axios from "axios";
-import "./Row.css";
 import { Link } from "react-router-dom";
 import { projectFirestore } from '../firebase/config';
 import { doc, getDoc } from "firebase/firestore";
+import { Container } from "react-bootstrap";
 
 const baseImgUrl = "https://image.tmdb.org/t/p/original";
 
@@ -39,7 +41,7 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
 
           recommList = docSnap.data().recommendationList;
         
-          Object.values(recommList).map((value, index) => {
+          Object.values(recommList).forEach((value, index) => {
             finalList.push(parseInt(value));
           })
         }
@@ -51,7 +53,7 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
               fetchUrl = `https://api.themoviedb.org/3/movie/${e}?api_key=964bd231b237392f459b9752e8e1b75b`
               const request = await axios1.get(fetchUrl);
               const data = request.data
-              return {'id':data.id, 'backdrop_path':data.backdrop_path, 'poster_path':data.poster_path, 'name':data.title}
+              return {'id':data.id, 'backdrop_path':data.backdrop_path, 'poster_path':data.poster_path, 'title':data.title}
             }
           )
         )
@@ -62,33 +64,32 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
   }, [query, isRecommand]);
 
 
-
   return (
     <div className="row">
-      <h4>{title}</h4>
-      
-      <div className="row_posters">
-        { 
-          movies && movies.map(
-            (movie) => 
-              
-            {
-              return movie.backdrop_path !== null && (
-                  <Link to={`/Movie/${movie.id}`}>
+      <h4 className="color-dark"> <b> {title} </b> </h4>
+      <Container>
+        <div className="row_posters">
+          { 
+            movies && movies.map(
+              (movie) => {
+                return movie.backdrop_path !== null && (
+                  <Link to={`/Movie/${movie.id}`} style={{textDecoration:'none'}}>
                     <img
-                        className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-                        src={`${baseImgUrl}${
-                        isLargeRow ? movie.poster_path : movie.backdrop_path
-                        }`}
-                        alt={movie.name}
-                        key={movie.id}
+                      className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+                      src={`${baseImgUrl}${
+                      isLargeRow ? movie.poster_path : movie.backdrop_path
+                      }`}
+                      alt={movie.title}
+                      key={movie.id}
                     />
+                    <div className="btn-dark-style" style={{paddingTop:5, textAlign:'center', fontSize:15}}>{movie.title}</div>
                   </Link>
                 )
-            }
+              }
             )
-        }
-      </div>
+          }
+        </div>
+      </Container>
     </div>
   );
 }

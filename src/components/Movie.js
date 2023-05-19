@@ -7,7 +7,8 @@ import { Container } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { projectFirestore } from '../firebase/config';
-import { doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import Ratings from "./Ratings";
 
 // const Movie = ({route,navigate}) => {
 const Movie = () => {
@@ -32,6 +33,10 @@ const Movie = () => {
         playerVars: {
           autoplay: 1,
         },
+    };
+
+    const size = {
+        width: "95%"
     };
 
     useEffect(() => {
@@ -92,21 +97,26 @@ const Movie = () => {
     
 	return (
 		<React.Fragment>
-			<Container className='py-5 code'>
+			<Container className='py-5 code color-dark'>
 
-                <Container> {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />} </Container>
-
-                <Container> <h4>Name:</h4><h5> {title}</h5> </Container>
-                <Container> <h4>Overview:</h4><h5> {overview}</h5> </Container>
-                <Container> <h4>Release Date:</h4><h5> {releaseDate}</h5> </Container>
-                <Container> <h4>Tagline:</h4><h5> {tagline}</h5> </Container>
-                <Container> <h4>Vote Average:</h4><h5> {voteAverage}</h5> </Container>
-                <Container> <h4>Vote Count:</h4><h5> {voteCount}</h5> </Container>
-                <Container> <h4>Runtime:</h4><h5> {runtime}</h5> </Container>
-                <Container> <h4>Budget:</h4><h5> {budget}</h5> </Container>
-                <Container> { adult && <h4>Adult</h4> } </Container>
-                <Container> <h4>Popularity:</h4><h5> {popularity}</h5> </Container>
+                <Container style={size}>    {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}  </Container>
                 
+                <Container className="py-5">
+                    <Container>    <h4> <b> Name: </b> {title} </h4>                         </Container>
+                    <Container>    <h4> <b> Overview: </b> {overview} </h4>                  </Container>
+                    <Container>    <h4> <b> Release Date: </b> {releaseDate} </h4>           </Container>
+                    <Container>    { tagline && <h4> <b> Tagline: </b>  {tagline} </h4> }    </Container>
+                    <Container>    <h4> <b> Average ratings: </b> {voteAverage}/10.0 </h4>           </Container>
+                    <Container>    <h4> <b> Number of ratings: </b> {voteCount} </h4>               </Container>
+                    <Container>    <h4> <b> Runtime: </b> {runtime} min </h4>                </Container>
+                    <Container>    { budget !== 0 && <h4> <b> Budget: </b> {budget} </h4> }  </Container>
+                    <Container>    { adult && <h4> <b> This movie is: </b> Adult </h4> }     </Container>
+                    <Container>    <h4> <b> Popularity: </b> {popularity} </h4>              </Container>
+                    <Container> 
+                        <Ratings movieId={movieId}/> 
+                    </Container>
+                </Container>
+
 			</Container>
 		</React.Fragment>
 	);

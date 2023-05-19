@@ -56,3 +56,15 @@ body {
   text-decoration: none;
   transform: translateY(4px);
 }
+
+#border{
+  border-radius: 50px;
+  border: 7px solid #003333;
+  padding: 20px; 
+  width: 700px;
+}
+
+.logo-light-style{
+  text-decoration: none;
+  color: #befaf9;
+}

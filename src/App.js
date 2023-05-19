@@ -5,7 +5,6 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 
 import React, { useState, useEffect }  from 'react';
-// import { ToastContainer, toast } from 'react-toastify';
 import { Outlet } from "react-router-dom";
 
 function App() {
