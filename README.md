@@ -7,7 +7,9 @@ Welcome to FlickTime! This project is a web application that allows users to dis
 | Name           | Student ID   | Email                        |
 | ---------------| -------------| -----------------------------|
 | Priyank Jagad  | 015280330    | priyankjagad59@gmail.com     |
-
+| Jay Bharadva   | 015958449    | jay.bharadva@sjsu.edu        |
+| Sagar Raval    | 015906683    | raval.sagar.sr@gmail.com     |
+| Urja Jain      | 015247518    | urja.jain97@gmail.com        |
 ## Features
 
 - **Movie Search**: Search for movies by title, genre, or keywords to find detailed information and reviews.
@@ -57,10 +59,6 @@ Contributions to FlickTime are welcome! If you find a bug or have suggestions fo
 
 - The FlickTime project is inspired by a love for movies and a passion for providing a user-friendly movie discovery platform.
 - Thanks to [TMDB Database](https://developer.themoviedb.org/docs) for providing the movie database API used in this project.
-
-## Contact
-
-If you have any questions or feedback, feel free to contact the project maintainer at priyankjagad59@gmail.com.
 
 Thank you for checking out FlickTime! Enjoy exploring movies and discovering new favorites!
 
