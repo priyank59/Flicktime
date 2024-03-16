@@ -1,5 +1,4 @@
 {
-  // Add your Firebase Authentication here
   "type": "service_account",
   "project_id": "flicktime-c2bcf",
   "private_key_id": "9464f989ca74301fd19dcd23d433f008cced6ccf",
