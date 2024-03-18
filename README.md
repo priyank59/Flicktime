@@ -6,6 +6,12 @@ Welcome to FlickTime! This project is a web application that allows users to dis
 
 [Visit our website](http://flicktime.website/)
 
+
+![Login Page](LoginPage.png)
+
+![Home Page](HomePage.png)
+
+
 ## Team
 
 | Name           | Student ID   | Email                        |
