@@ -11,6 +11,7 @@ Welcome to FlickTime! This project is a web application that allows users to dis
 
 ![Home Page](HomePage.png)
 
+![Movie-Trailer](Movie-Trailer.png)
 
 ## Team
 
