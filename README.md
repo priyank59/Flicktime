@@ -1,7 +1,10 @@
 
 # FlickTime
 
-Welcome to FlickTime! This project is a web application that allows users to discover and explore movies, providing information such as ratings, reviews, and recommendations. With FlickTime, you can stay up-to-date with the latest movies, find your favorites, and discover new ones.
+Welcome to FlickTime! This project is a web application that allows users to discover and explore movies, providing information such as ratings, reviews, and recommendations. With FlickTime, you can stay up-to-date with the latest movies, find your favorites, and discover new ones. Here's our website and it's respective images:
+
+
+[Visit our website](https://flicktime.website/)
 
 ## Team
 
