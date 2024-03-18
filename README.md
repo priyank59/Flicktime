@@ -70,6 +70,3 @@ Contributions to FlickTime are welcome! If you find a bug or have suggestions fo
 - Thanks to [TMDB Database](https://developer.themoviedb.org/docs) for providing the movie database API used in this project.
 
 Thank you for checking out FlickTime! Enjoy exploring movies and discovering new favorites!
-
-
-=======
