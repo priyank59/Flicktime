@@ -1,5 +1,4 @@
 {
-  // Add your key.json file here
   "apiKey": "AIzaSyCWpKUZwO8QIf1FZWC2FdMstQkFfkzgmC8",
   "authDomain": "flicktime-c2bcf.firebaseapp.com",
   "databaseURL": "https://flicktime-c2bcf-default-rtdb.firebaseio.com",

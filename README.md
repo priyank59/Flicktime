@@ -29,7 +29,7 @@ To run FlickTime locally on your machine, follow these steps:
 
 ### `cd FlickTime`
 
-
+	
 3. Install the dependencies:
 
 ### `npm install`

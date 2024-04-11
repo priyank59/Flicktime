@@ -17,6 +17,7 @@ import pickle
 
 app=Flask(__name__)
 cred = credentials.Certificate("authKey.json")
+print(cred)
 default_app=firebase_admin.initialize_app(cred)
 CORS(app)
 db = firestore.client()
