@@ -16,17 +16,12 @@ import pandas as pd
 import pickle
 
 app=Flask(__name__)
-<<<<<<< HEAD
-cred = credentials.Certificate("API/authKey.json")
-=======
-cred = credentials.Certificate("authKey.json")
-print(cred)
->>>>>>> afb0b5c95bf82962a486ad311115d4037a1bade6
+cred = credentials.Certificate("./API/authKey.json")
 default_app=firebase_admin.initialize_app(cred)
 CORS(app)
 db = firestore.client()
 todo_ref=db.collection('todos')  #sample collections
-pb = pyrebase.initialize_app(json.load(open('API/key.json')))
+pb = pyrebase.initialize_app(json.load(open('./API/key.json')))
 
 @app.route("/") 
 def home():
