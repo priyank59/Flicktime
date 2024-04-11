@@ -17,7 +17,7 @@ const Home = () => {
 				<Form.Control name="searchInput" type="search" placeholder="Search" className="me-auto color-dark" aria-label="Search" style={{marginLeft:30, width:1240}} onChange={(e) => setSearchQuery(e.currentTarget.value)}/>
 				{searchQuery && <RowMovies title="Search result" fetchUrl={requests.fetchSearch} query={searchQuery} isRecommand={false}/>}	
 				<RowMovies title="Trending Now" fetchUrl={requests.fetchTrending} isRecommand={false} isLargeRow/>
-				<RowMovies title="Recommended" isRecommand={true}/>
+				{/* <RowMovies title="Recommended" isRecommand={true}/> */}
 				<RowMovies title="Top Rated" fetchUrl={requests.fetchTopRated} isRecommand={false}/>
 				<RowMovies title="Action Movies" fetchUrl={requests.fetchActionMovies} isRecommand={false}/>
 				<RowMovies title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} isRecommand={false} />

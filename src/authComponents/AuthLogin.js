@@ -105,17 +105,19 @@ const AuthLogin = () => {
                         <Form id="loginForm" onSubmit={submitLoginForm}>
                             <FormGroup className="mb-3">
                                 <FormLabel htmlFor={'login-username'}>Email</FormLabel>
-                                <input type={'text'} className="form-control" id={'login-username'} name="email" required />
+                                <input type={'text'} className="form-control" id={'login-username'} name="email" default="demo03613@gmail.com" required />
                             </FormGroup>
                             <FormGroup className="mb-3">
                                 <FormLabel htmlFor={'login-password'}>Password</FormLabel>
-                                <input type={'password'} className="form-control" id={'login-password'} name="password" required />
+                                <input type={'password'} className="form-control" id={'login-password'} name="password" default="demo@1234" required />
                             </FormGroup>
                             <Button type="submit" className="btn-success mt-2" id="login-btn">Login</Button>
                         </Form>
                         <Link to="/authComponents/AuthRegistration">New User?</Link>
                     </Col>
                 </Row>
+                <p style={{marginLeft:"25px", marginBottom:"0px"}}> Demo Email: demotest4512@yahoo.com</p>
+                <p style={{marginLeft:"25px"}}> Demo Password: demo@1234</p>
             </Container>
         </React.Fragment>
     );

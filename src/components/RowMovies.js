@@ -62,6 +62,7 @@ function Row({ title, fetchUrl, isLargeRow, query, isRecommand }) {
       fetchDataRecommended();
     }
   }, [query, isRecommand]);
+  console.log(isRecommand)
 
 
   return (

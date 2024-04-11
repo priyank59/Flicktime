@@ -24,13 +24,13 @@ To run FlickTime locally on your machine, follow these steps:
 
 1. Clone the repository:
 
-### `git clone https://github.com/YourUsername/FlickTime.git`
+### `git clone https://github.com/priyank59/FlickTime.git`
 
 2. Navigate to the project directory:
 
 ### `cd FlickTime`
 
-
+	
 3. Install the dependencies:
 
 ### `npm install`

@@ -16,7 +16,12 @@ import pandas as pd
 import pickle
 
 app=Flask(__name__)
+<<<<<<< HEAD
 cred = credentials.Certificate("API/authKey.json")
+=======
+cred = credentials.Certificate("authKey.json")
+print(cred)
+>>>>>>> afb0b5c95bf82962a486ad311115d4037a1bade6
 default_app=firebase_admin.initialize_app(cred)
 CORS(app)
 db = firestore.client()
